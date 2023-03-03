@@ -1,11 +1,11 @@
 import React from 'react'
 
-const About = () => {
+const Login = () => {
   return (
     <div className='h-screen bg-slate-700'>
-      Hello
+      
     </div>
   )
 }
 
-export default About
+export default Login
