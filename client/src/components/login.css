@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.bg-login {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cover {
+    background-color: white;
+    width: 30em;
+    height: 35em;
+    position: relative;
+    border-radius: 1em;
+    box-shadow: 0 0.188em 1.550em rgba(156,156,156);
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+}
+input {
+        border: none;
+        background-color: rgba(229, 226, 226);
+        height: 4em;
+        width: 80%;
+        border-radius: 0.25em;
+        text-align: center;
+        padding:  2em;
+    }
+
+
+input:focus {
+    outline-color: rgba(32, 177, 255)
+}
