@@ -31,7 +31,7 @@ const LeaguePage = () => {
             </div>
             <div>
                 {posts.map((post) => (
-                    <Link key={post.id} to={`/postDetails/${id}`}>
+                    <Link key={post.id} to={`/postDetails/${post.id}`}>
                         <div className='text-white my-20'>
                             Hello
                         </div>
