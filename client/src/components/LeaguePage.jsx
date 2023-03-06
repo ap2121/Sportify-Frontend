@@ -9,10 +9,12 @@ const LeaguePage = () => {
     useEffect(() => {
     const getSportbyId = async () => {
         const response = await axios.get(`http://localhost:3001/api/sports/all-sports/`)
-        setSelectedLeague(response)
+        setSelectedLeague(response.data)
+        console.log(response);
     }
     getSportbyId()
 }, [])
+
   return (
     <div className='h-screen bg-slate-700'>
         Team
