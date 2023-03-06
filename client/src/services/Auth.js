@@ -1,6 +1,6 @@
 import Client from "./api";
 
-export const signInUser = async(data) => {
+export const SignInUser = async(data) => {
     try {
         const res = await Client.post('/api/auth/login', data)
         localStorage.setItem('token', res.data.token)
@@ -22,6 +22,7 @@ export const RegisterUser = async (data) => {
 export const CheckSession = async () => {
     try {
         const res = await Client.get('/api/auth/session')
+        return res.data
     } catch(error) {
         throw error
     }
