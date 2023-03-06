@@ -8,6 +8,7 @@ import { CheckSession } from './services/Auth';
 import { useState, useEffect } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom'
 import LeaguePage from './components/LeaguePage';
+import PostDetails from './components/PostDetails'
 
 
 
@@ -46,6 +47,7 @@ function App() {
             <Route path='/login' element={<Login setUser={setUser}/>} />
             <Route path='/register' element={<Register/>}></Route>
             <Route path='/leaguePage/:id' element={<LeaguePage />} />
+            <Route path='/postDetails/:id' element={<PostDetails />} />
           </Routes>
           </main>
       </div>
