@@ -31,9 +31,19 @@ input {
         border-radius: 0.25em;
         text-align: center;
         padding:  2em;
+        margin: 20px;
+        
     }
 
 
 input:focus {
     outline-color: rgba(32, 177, 255)
+}
+
+.login-btn {
+    display: block;
+    margin: 0 auto;
+}
+.login-btn:hover {
+    cursor: pointer;
 }
