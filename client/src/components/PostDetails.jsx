@@ -66,6 +66,12 @@ const handleSub = (e) => {
         <img src={postDetails.image} alt={postDetails.image} /> 
         <p>{postDetails.createdAt.split('T')[0]} <button onClick={() => handleDeletePost(postDetails.id, postDetails.Sport.id)}>Delete Post</button></p>
       </div>
+      <button onClick={toggleEdit}>Edit Post</button>
+      {edit && <form>
+        <input type='text' name='content' value={editData.content} onChange={handleChange}/>
+        <input type='text' name='image' value={editData.image} onChange={handleChange}/>
+        
+        </form>}
     </div>
   )
 }
