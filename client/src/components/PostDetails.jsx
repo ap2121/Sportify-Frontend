@@ -49,7 +49,7 @@ const handleChange = (e) => {
 
 const handleSub = (e) => {
   e.preventDefault()
-  axios.put(`http://localhost:3001/api/posts/get-post/${id}`, editData)
+  axios.put(`http://localhost:3001/api/posts/edit-post/${id}`, editData)
   setEdit(false)
   navigate(`/postDetails/${id}`)
   setPostDetails(editData)
