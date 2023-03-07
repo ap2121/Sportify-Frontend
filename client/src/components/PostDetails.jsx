@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
-const PostDetails = () => {
+const PostDetails = ({user}) => {
 
   let navigate = useNavigate()
 
@@ -55,12 +55,12 @@ const handleSub = (e) => {
   setPostDetails(editData)
 }
   
-  return postDetails && (
-
+  let userOptions = (
+   
     <div>
-      <div>
+    <div>
         <p>{postDetails.User.username}</p>
-        <h3>{postDetails.content}</h3>
+         <h3>{postDetails.content}</h3>
       </div>
       <div>
         <img src={postDetails.image} alt={postDetails.image} /> 
@@ -72,6 +72,26 @@ const handleSub = (e) => {
         <input type='text' name='image' value={editData.image} onChange={handleChange}/>
         <button>Edit Post</button>
         </form>}
+        </div>
+  )
+    
+
+    let publicView = (
+      <div>
+      <div>
+        <p>{postDetails.User.username}</p>
+         <h3>{postDetails.content}</h3>
+      </div>
+      <div>
+        <img src={postDetails.image} alt={postDetails.image} /> 
+        <p>{postDetails.createdAt.split('T')[0]}</p>
+      </div>
+        </div>
+    )
+  return postDetails && (
+
+    <div>
+     {user.email === postDetails.User.email ? userOptions : publicView}
     </div>
   )
 }
