@@ -12,8 +12,9 @@ const PostDetails = () => {
   let {id} = useParams()
 
   const handleDeletePost = async (postID, sportID) => {
+    const id = sportID
     await axios.delete(`http://localhost:3001/api/posts/delete-post/${postID}`)
-    navigate(`/leaguePage/${sportID}`)
+    navigate(`/leaguePage/${id}`)
 
   }
 
