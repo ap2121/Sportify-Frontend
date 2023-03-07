@@ -38,9 +38,9 @@ const toggleEdit = () => {
 }
 
 const handleChange = (e) => {
-  setPostData((prevPostData) => {
+  setEditData((prevEditData) => {
     return {
-      ...prevPostData,
+      ...prevEditData,
       [e.target.name]: e.target.value
     }
   }) 
