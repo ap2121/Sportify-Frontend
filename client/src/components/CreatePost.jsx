@@ -1,6 +1,6 @@
 import React from 'react'
 
-const CreatePost = () => {
+const CreatePost = ({createPost, handlePostChange, handlePostSubmit}) => {
 
 
     return (
@@ -12,9 +12,11 @@ const CreatePost = () => {
                     type="text"
                     id="content"
                     placeholder="What's your take?"
-                    onChange={handleRecipeChange}
-                    value={recipeState.name}
+                    onChange={handlePostChange}
+                    value={createPost.content}
                 />
+
+                <button type="submit">Post</button>
             </form>
 
         </div>

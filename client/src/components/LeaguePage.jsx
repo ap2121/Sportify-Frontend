@@ -3,6 +3,7 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import CreatePost from './CreatePost'
 
 const LeaguePage = ({user}) => {
 
@@ -18,21 +19,24 @@ const LeaguePage = ({user}) => {
     let { id } = useParams()
 
     const handlePostChange = (evt) => {
-        setPostState({ ...recipeState, [evt.target.id]: evt.target.value })
+        setCreatePost({ ...recipeState, [evt.target.id]: evt.target.value })
     }
 
     const handlePostSubmit = async (e) => {
         e.preventDefault()
+        await axios.post(`http://localhost:3001/api/posts/create-post/${user.id}/${id}`, createPost)
+        setCreatePost(initialPostState)
+        getSportbyId()
+    }
 
+    const getSportbyId = async () => {
+        const response = await axios.get(`http://localhost:3001/api/posts/posts-by-sport/${id}`)
+        setPosts(response.data)
+        setSelectedLeague(response.data[0])
+        console.log(posts);
     }
 
     useEffect(() => {
-        const getSportbyId = async () => {
-            const response = await axios.get(`http://localhost:3001/api/posts/posts-by-sport/${id}`)
-            setPosts(response.data)
-            setSelectedLeague(response.data[0])
-            console.log(posts);
-        }
         getSportbyId()
     }, [id])
 
@@ -43,6 +47,9 @@ const LeaguePage = ({user}) => {
                     <img src={selectedLeague.Sport.image} alt={selectedLeague.Sport.image} />
                     <h1 className='text-6xl text-white'>{selectedLeague.Sport.leagueName}</h1>
                     <h2 className='text-2xl text-white'>{selectedLeague.Sport.description}</h2>
+                </div>
+                <div>
+                    {<CreatePost createPost={createPost} handlePostChange={handlePostChange} handlePostSubmit={handlePostSubmit}/>}
                 </div>
                 <div className='flex flex-col mt-10'>
 
