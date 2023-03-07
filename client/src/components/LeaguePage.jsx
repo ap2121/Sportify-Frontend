@@ -18,30 +18,35 @@ const LeaguePage = () => {
             const response = await axios.get(`http://localhost:3001/api/posts/posts-by-sport/${id}`)
             setPosts(response.data)
             setSelectedLeague(response.data[0])
+            console.log(posts);
         }
         getSportbyId()
     }, [id])
 
     return selectedLeague && (
         <div className='h-screen bg-slate-700'>
-            <div className='flex flex-col'>
-                <img src={selectedLeague.Sport.image} alt={selectedLeague.Sport.image} />
-                <h1 className='text-'>{selectedLeague.Sport.leagueName}</h1>
-                <h2>{selectedLeague.Sport.description}</h2>
+            <div className='max-w-screen-lg p-4 mx-auto flex flex-col w-full h-full'>
+                <div className='flex flex-col'>
+                    <img src={selectedLeague.Sport.image} alt={selectedLeague.Sport.image} />
+                    <h1 className='text-'>{selectedLeague.Sport.leagueName}</h1>
+                    <h2>{selectedLeague.Sport.description}</h2>
+                </div>
+                <div className='flex flex-col '>
+                    {posts.map((post) => (
+                        <Link key={post.id} to={`/postDetails/${post.id}`} className='shadow-md  shadow-gray-600 rounded-lg'>
+                            <div className='text-white bg-slate-500 rounded-lg'>
+                                <h2 className='text-2xl'>{post.User.username}</h2>
+                                
+                                <h3>{post.content}</h3>
+                                
+                            </div>
+
+
+                        </Link>
+                    ))}
+                </div>
+                {/* Posts by Sport */}
             </div>
-            <div>
-                {posts.map((post) => (
-                    <Link key={post.id} to={`/postDetails/${post.id}`}>
-                        <div className='text-white p-5 w-40 my-20 border-2'>
-                            Hello
-                        </div>
-
-
-                    </Link>
-                ))}
-            </div>
-            {/* Posts by Sport */}
-
         </div>
     )
 }
