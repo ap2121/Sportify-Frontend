@@ -4,14 +4,24 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 
-const LeaguePage = () => {
+const LeaguePage = ({user}) => {
+
+    
 
     const [selectedLeague, setSelectedLeague] = useState()
     const [posts, setPosts] = useState()
+    const [createPost, setCreatePost] = useState()
 
     let { id } = useParams()
 
+    const handlePostChange = (evt) => {
+        setPostState({ ...recipeState, [evt.target.id]: evt.target.value })
+    }
 
+    const handlePostSubmit = async (e) => {
+        e.preventDefault()
+
+    }
 
     useEffect(() => {
         const getSportbyId = async () => {
