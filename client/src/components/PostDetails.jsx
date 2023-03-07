@@ -29,6 +29,7 @@ const PostDetails = () => {
 
 
   return postDetails && (
+
     <div>
       <div>
         <p>{postDetails.User.username}</p>
