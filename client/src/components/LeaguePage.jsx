@@ -19,14 +19,18 @@ const LeaguePage = ({user}) => {
     let { id } = useParams()
 
     const handlePostChange = (evt) => {
-        setCreatePost({ ...recipeState, [evt.target.id]: evt.target.value })
+        setCreatePost({ ...createPost, [evt.target.id]: evt.target.value })
     }
 
     const handlePostSubmit = async (e) => {
         e.preventDefault()
-        await axios.post(`http://localhost:3001/api/posts/create-post/${user.id}/${id}`, createPost)
-        setCreatePost(initialPostState)
-        getSportbyId()
+        if (createPost.content || createPost.image) {
+            await axios.post(`http://localhost:3001/api/posts/create-post/${user.id}/${id}`, createPost)
+            setCreatePost(initialPostState)
+            getSportbyId()
+        } else {
+            return
+        }
     }
 
     const getSportbyId = async () => {
