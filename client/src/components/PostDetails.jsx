@@ -70,7 +70,7 @@ const handleSub = (e) => {
       {edit && <form>
         <input type='text' name='content' value={editData.content} onChange={handleChange}/>
         <input type='text' name='image' value={editData.image} onChange={handleChange}/>
-        
+        <button>Edit Post</button>
         </form>}
     </div>
   )
