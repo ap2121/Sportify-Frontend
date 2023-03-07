@@ -23,7 +23,9 @@ function App() {
   }
   const checkToken  = async () => {
     const user = await CheckSession()
+    
     setUser(user)
+    
   }
 
   useEffect(() => {
@@ -47,7 +49,7 @@ function App() {
             <Route path='/login' element={<Login setUser={setUser}/>} />
             <Route path='/register' element={<Register/>}></Route>
             <Route path='/leaguePage/:id' element={<LeaguePage />} />
-            <Route path='/postDetails/:id' element={<PostDetails />} />
+            <Route path='/postDetails/:id' element={<PostDetails user={user}/>} />
           </Routes>
           </main>
       </div>
