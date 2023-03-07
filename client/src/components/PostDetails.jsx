@@ -1,6 +1,7 @@
-import React from 'react'
-
+import React from "react"
 const PostDetails = () => {
+ 
+  
   return (
     <div>
       
