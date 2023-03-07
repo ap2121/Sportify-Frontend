@@ -25,18 +25,18 @@ const LeaguePage = () => {
 
     return selectedLeague && (
         <div className='h-screen bg-slate-700'>
-            <div className='max-w-screen-lg p-4 mx-auto flex flex-col w-full h-full'>
+            <div className='max-w-screen-lg p-7 mx-auto flex flex-col'>
                 <div className='flex flex-col'>
                     <img src={selectedLeague.Sport.image} alt={selectedLeague.Sport.image} />
-                    <h1 className='text-'>{selectedLeague.Sport.leagueName}</h1>
-                    <h2>{selectedLeague.Sport.description}</h2>
+                    <h1 className='text-6xl text-white'>{selectedLeague.Sport.leagueName}</h1>
+                    <h2 className='text-2xl text-white'>{selectedLeague.Sport.description}</h2>
                 </div>
-                <div className='flex flex-col '>
+                <div className='flex flex-col mt-10'>
                     {posts.map((post) => (
                         <Link key={post.id} to={`/postDetails/${post.id}`} className='shadow-md  shadow-gray-600 rounded-lg'>
                             <div className='text-white bg-slate-500 rounded-lg'>
-                                <h2 className='text-2xl'>{post.User.username}</h2>
-                                
+                                <h2 className='text-3xl'>{post.User.username}</h2>
+
                                 <h3>{post.content}</h3>
                                 
                             </div>
