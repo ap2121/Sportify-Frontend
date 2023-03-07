@@ -67,7 +67,7 @@ const handleSub = (e) => {
         <p>{postDetails.createdAt.split('T')[0]} <button onClick={() => handleDeletePost(postDetails.id, postDetails.Sport.id)}>Delete Post</button></p>
       </div>
       <button onClick={toggleEdit}>Edit Post</button>
-      {edit && <form>
+      {edit && <form onSubmit={handleSub}>
         <input type='text' name='content' value={editData.content} onChange={handleChange}/>
         <input type='text' name='image' value={editData.image} onChange={handleChange}/>
         <button>Edit Post</button>
