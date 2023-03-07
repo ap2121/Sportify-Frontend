@@ -5,13 +5,13 @@ import axios from 'axios'
 
 const PostDetails = ({user}) => {
 
-  let navigate = useNavigate()
+let navigate = useNavigate()
 
-  const [postDetails, setPostDetails] = useState(null)
-  const [edit, setEdit] = useState(false)
-  const [editData, setEditData] = useState({})
+const [postDetails, setPostDetails] = useState(null)
+const [edit, setEdit] = useState(false)
+const [editData, setEditData] = useState({})
 
-  let {id} = useParams()
+let {id} = useParams()
 
   const handleDeletePost = async (postID, sportID) => {
     const id = sportID
@@ -23,6 +23,8 @@ const PostDetails = ({user}) => {
   const getPostDetails = async () => {
     const response = await axios.get(`http://localhost:3001/api/posts/get-post/${id}`)
     setPostDetails(response.data)
+    console.log(response.data)
+    console.log(user)
   }
 
   useEffect(() => {
@@ -55,12 +57,12 @@ const handleSub = (e) => {
   setPostDetails(editData)
 }
   
-  let userOptions = (
-   
+ return postDetails && (
+
     <div>
-    <div>
+      <div>
         <p>{postDetails.User.username}</p>
-         <h3>{postDetails.content}</h3>
+        <h3>{postDetails.content}</h3>
       </div>
       <div>
         <img src={postDetails.image} alt={postDetails.image} /> 
@@ -69,29 +71,12 @@ const handleSub = (e) => {
       <button onClick={toggleEdit}>Edit Post</button>
       {edit && <form onSubmit={handleSub}>
         <input type='text' name='content' value={editData.content} onChange={handleChange}/>
+
         <input type='text' name='image' value={editData.image} onChange={handleChange}/>
         <button>Edit Post</button>
-        </form>}
-        </div>
-  )
-    
-
-    let publicView = (
-      <div>
-      <div>
-        <p>{postDetails.User.username}</p>
-         <h3>{postDetails.content}</h3>
-      </div>
-      <div>
-        <img src={postDetails.image} alt={postDetails.image} /> 
-        <p>{postDetails.createdAt.split('T')[0]}</p>
-      </div>
-        </div>
-    )
-  return postDetails && (
-
-    <div>
-     {user.email === postDetails.User.email ? userOptions : publicView}
+        </form>
+        
+        }
     </div>
   )
 }
