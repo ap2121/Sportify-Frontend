@@ -27,7 +27,7 @@ const LeaguePage = () => {
         <div className='h-screen bg-slate-700'>
             <div className='max-w-screen-lg p-7 mx-auto flex flex-col'>
                 <div className='flex flex-col'>
-                    <img src={selectedLeague.Sport.image} alt={selectedLeague.Sport.image} />
+                    <img src={selectedLeague.Sport.image} alt={selectedLeague.Sport.image} className='max-w-screen- '/>
                     <h1 className='text-6xl text-white'>{selectedLeague.Sport.leagueName}</h1>
                     <h2 className='text-2xl text-white'>{selectedLeague.Sport.description}</h2>
                 </div>

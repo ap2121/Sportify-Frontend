@@ -21,13 +21,13 @@ const Navbar = ({ user, handleLogOut }) => {
   let userOptions
   if (user) {
     userOptions = (
-      <header>
+      <header className='flex justify-between items-center w-full'>
         <div className='text-2xl ml-5 text-white'>
           <NavLink to='/'>Sportify</NavLink>
         </div>
 
         <ul className='px-5 flex items-center'>
-          <li>Welcome {user.username}</li>
+          <li className='font-medium text-xl mr-6 text-slate-100'>Welcome {user.username}</li>
           <li className='px-4 cursor-pointer capitalize font-medium text-white hover:scale-105 duration-150'>
             <NavLink onClick={handleLogOut} to='/'>Sign Out</NavLink>
 
@@ -63,11 +63,11 @@ const Navbar = ({ user, handleLogOut }) => {
   }
 
   let publicOptions = (
-    <header>
+    <header className='flex justify-between items-center text-white w-full'>
       <div className='text-2xl ml-5 text-white'>
         <NavLink to='/'>Sportify</NavLink>
       </div>
-      <ul className='px-5 flex items-center'>
+      <ul className='px-5 items-center'>
         <li className='px-4 cursor-pointer capitalize font-medium text-white hover:scale-105 duration-150'>
           <NavLink to='/login'>Sign In</NavLink>
         </li>
