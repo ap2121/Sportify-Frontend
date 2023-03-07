@@ -8,6 +8,8 @@ const PostDetails = () => {
   let navigate = useNavigate()
 
   const [postDetails, setPostDetails] = useState(null)
+  const [edit, setEdit] = useState(false)
+  const [editData, setEditData] = useState({})
 
   let {id} = useParams()
 
@@ -27,7 +29,32 @@ const PostDetails = () => {
     getPostDetails()
   }, [id])
 
+  useEffect(() => {
+    setEditData(postDetails)
+  }, [postDetails])
+  
+const toggleEdit = () => {
+  setEdit(!edit)
+}
 
+const handleChange = (e) => {
+  setEditData((prevEditData) => {
+    return {
+      ...prevEditData,
+      [e.target.name]: e.target.value
+    }
+  }) 
+}
+
+
+const handleSub = (e) => {
+  e.preventDefault()
+  axios.put(`http://localhost:3001/api/posts/get-post/${id}`, editData)
+  setEdit(false)
+  navigate(`/postDetails/${id}`)
+  setPostDetails(editData)
+}
+  
   return postDetails && (
 
     <div>
