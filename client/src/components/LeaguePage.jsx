@@ -6,11 +6,14 @@ import { Link } from 'react-router-dom'
 
 const LeaguePage = ({user}) => {
 
-    
+    const initialPostState = {
+        content: '',
+        image: ''
+    }
 
     const [selectedLeague, setSelectedLeague] = useState()
     const [posts, setPosts] = useState()
-    const [createPost, setCreatePost] = useState()
+    const [createPost, setCreatePost] = useState(initialPostState)
 
     let { id } = useParams()
 
