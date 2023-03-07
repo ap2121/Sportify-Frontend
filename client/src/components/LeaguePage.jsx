@@ -32,6 +32,7 @@ const LeaguePage = () => {
                     <h2 className='text-2xl text-white'>{selectedLeague.Sport.description}</h2>
                 </div>
                 <div className='flex flex-col mt-10'>
+
                     {posts.map((post) => (
                         <Link key={post.id} to={`/postDetails/${post.id}`} className='shadow-md  shadow-gray-600 rounded-lg'>
                             <div className='text-white bg-slate-500 rounded-lg'>
@@ -44,6 +45,7 @@ const LeaguePage = () => {
 
                         </Link>
                     ))}
+                    
                 </div>
                 {/* Posts by Sport */}
             </div>
