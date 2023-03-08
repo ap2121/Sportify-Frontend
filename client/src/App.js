@@ -50,7 +50,7 @@ function App() {
             <Route path='/register' element={<Register />}></Route>
             <Route path='/leaguePage/:id' element={<LeaguePage user={user} />} />
             <Route path='/postDetails/:id' element={<PostDetails user={user} />} />
-            <Route path='/yourposts/:id' element={<YourPosts user={user}/>}/>
+            <Route path='/yourPosts/:id' element={<YourPosts/>}/>
           </Routes>
         </main>
       </div>
