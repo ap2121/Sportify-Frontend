@@ -3,14 +3,22 @@ import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import EditPost from './EditPost'
+import CommentForm from './CommentForm'
 
 const PostDetails = ({ user }) => {
 
   let navigate = useNavigate()
 
+  const initialCommentState = {
+    text: ''
+  }
+
   const [postDetails, setPostDetails] = useState(null)
   const [edit, setEdit] = useState(false)
   const [editData, setEditData] = useState()
+  const [comments, setComments] = useState()
+  const [commentForm, setCommentForm] = useState(initialCommentState)
+
 
   let { id } = useParams()
 
@@ -26,9 +34,15 @@ const PostDetails = ({ user }) => {
     setEditData(response.data)
   }
 
+  const getAllComments = async () => {
+    const response = await axios.get(`http://localhost:3001/api/comments/get-all-comments/${id}`)
+    setComments(response.data)
+  }
+
   useEffect(() => {
     getPostDetails()
-  }, [])
+    getAllComments()
+  }, [id])
 
   const handlePostChange = (evt) => {
     setEditData({ ...editData, [evt.target.id]: evt.target.value })
@@ -45,41 +59,63 @@ const PostDetails = ({ user }) => {
     setEdit(!edit)
   }
 
+  const handleCommentChange = (evt) => {
+    setCommentForm({ ...CommentForm, [evt.target.id]: evt.target.value })
+  }
+
+  const handleCommentSubmit = async (e) => {
+    e.preventDefault()
+    await axios.post(`http://localhost:3001/api/comments/create-comment/${user.id}/${id}`, commentForm)
+    setCommentForm(initialCommentState)
+    getAllComments()
+
+  }
+
   return postDetails && (
     <div className='min-h-screen bg-slate-100'>
-  {parseInt(user?.id) === parseInt(postDetails?.User?.id) ?
-    <div className='border-2 rounded-lg p-10 max-w-xl mx-auto bg-white mt-84'>
-      <div className='flex flex-col justify-start font-bold'>
-        <p className='text-3xl flex justify-start'>@
-          {postDetails.User.username}
-        </p>
-        <p className='flex justify-start text-slate-400 mt-3'>{postDetails.createdAt.split('T')[0]}
-        </p>
-      </div>
-      <h3 className=' flex justify-start text-xl my-3'>{postDetails.content}
-      </h3>
-      <img src={postDetails.image} alt={postDetails.image} />
+      {parseInt(user?.id) === parseInt(postDetails?.User?.id) ?
+        <div className='border-2 rounded-lg p-10 max-w-xl mx-auto bg-white mt-84'>
+          <div className='flex flex-col justify-start font-bold'>
+            <p className='text-3xl flex justify-start'>@
+              {postDetails.User.username}
+            </p>
+            <p className='flex justify-start text-slate-400 mt-3'>{postDetails.createdAt.split('T')[0]}
+            </p>
+          </div>
+          <h3 className=' flex justify-start text-xl my-3'>{postDetails.content}
+          </h3>
+          <img src={postDetails.image} alt={postDetails.image} />
 
-      <div className='max-w-xl mx-auto flex justify-around mt-4'>
-        <button onClick={() => handleDeletePost(postDetails.id, postDetails.Sport.id)}>Delete Post</button>
-        <button onClick={toggleEdit}>Edit Post</button>
-      </div>
-      {
-        edit && <EditPost editData={editData} handlePostChange={handlePostChange} handlePostEdit={handlePostEdit} />
+          <div className='max-w-xl mx-auto flex justify-around mt-4'>
+            <button onClick={() => handleDeletePost(postDetails.id, postDetails.Sport.id)}>Delete Post</button>
+            <button onClick={toggleEdit}>Edit Post</button>
+          </div>
+          {
+            edit && <EditPost editData={editData} handlePostChange={handlePostChange} handlePostEdit={handlePostEdit} />
+          }
+        </div> :
+        <div className='border-2 rounded-lg p-10 max-w-xl mx-auto p mt-20'>
+          <div className='flex flex-row justify-start font-bold'>
+            <p className='text-white text-3xl'>{postDetails.User.username}</p>
+          </div>
+          <h3 className=' flex justify-start text-white text-xl my-3'>{postDetails.content}</h3>
+          <div>
+            <img src={postDetails.image} alt={postDetails.image} />
+            <p className='flex justify-start text-slate-400 mt-3'>{postDetails.createdAt.split('T')[0]}</p>
+          </div>
+        </div>
       }
-    </div> :
-    <div className='border-2 rounded-lg p-10 max-w-xl mx-auto p mt-20'>
-      <div className='flex flex-row justify-start font-bold'>
-        <p className='text-white text-3xl'>{postDetails.User.username}</p>
-      </div>
-      <h3 className=' flex justify-start text-white text-xl my-3'>{postDetails.content}</h3>
       <div>
-        <img src={postDetails.image} alt={postDetails.image} />
-        <p className='flex justify-start text-slate-400 mt-3'>{postDetails.createdAt.split('T')[0]}</p>
+        {comments?.length > 0 && comments.map((comment) => (
+          <div key={comment.id}>
+            {comment.text} {comment.User.username} {comment.createdAt.split('T')[0]} 
+          </div>
+        ))}
       </div>
+      {user?.id && <div>
+        <CommentForm handleCommentSubmit={handleCommentSubmit} handleCommentChange={handleCommentChange} commentForm={commentForm} />
+      </div>}
     </div>
-  }
-</div>
 
   )
 }

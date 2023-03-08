@@ -54,14 +54,14 @@ const LeaguePage = ({user}) => {
             />
             <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
             <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center">
-              <h1 className="text-5xl font-bold text-white">{selectedLeague.Sport.leagueName}</h1>
-              <h2 className="text-xl text-white">{selectedLeague.Sport.description}</h2>
+              <h1 className="text-5xl font-bold text-white">{selectedLeague?.Sport.leagueName}</h1>
+              <h2 className="text-xl text-white">{selectedLeague?.Sport.description}</h2>
             </div>
           </div>
           <div className="max-w-lg mx-auto py-8 px-4 sm:px-6 lg:px-8">
-            <CreatePost createPost={createPost} handlePostChange={handlePostChange} handlePostSubmit={handlePostSubmit}/>
-            <div className="mt-8 space-y-8">
-              {posts.map((post) => (
+            {user?.id && <CreatePost createPost={createPost} handlePostChange={handlePostChange} handlePostSubmit={handlePostSubmit}/>}
+            <div className="mt-8 space-y-8 flex flex-col-reverse">
+              {posts?.length > 0 && posts.map((post) => (
                 <Link key={post.id} to={`/postDetails/${post.id}`} className="block bg-white shadow-md rounded-lg hover:shadow-lg transition-shadow">
                   <div className="p-4">
                     <h2 className="text-lg font-bold flex justify-start">@{post.User.username}</h2>
