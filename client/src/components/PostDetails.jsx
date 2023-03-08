@@ -74,7 +74,6 @@ const PostDetails = ({ user }) => {
         </div>
       }
     </div>
-
   )
 }
 export default PostDetails
