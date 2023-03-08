@@ -46,39 +46,41 @@ const PostDetails = ({ user }) => {
   }
 
   return postDetails && (
-    <div className='h-screen bg-slate-700'>
-      {parseInt(user?.id) === parseInt(postDetails?.User?.id) ?
-        <div className='border-2 rounded-lg p-10 max-w-xl mx-auto p'>
-          <div className='flex flex-row justify-start font-bold'>
-            <p className='text-white text-3xl'>
-              {postDetails.User.username}
-            </p>
-          </div>
-          <h3 className=' flex justify-start text-white text-xl my-3'>{postDetails.content}
-          </h3>
-          <img src={postDetails.image} alt={postDetails.image} />
-          <p className='flex justify-start text-slate-400 mt-3'>{postDetails.createdAt.split('T')[0]}
-          </p>
-          <div className='text-white max-w-xl mx-auto flex justify-around mt-4'>
-            <button onClick={() => handleDeletePost(postDetails.id, postDetails.Sport.id)}>Delete Post</button>
-            <button onClick={toggleEdit}>Edit Post</button>
-          </div>
-          {
-            edit && <EditPost editData={editData} handlePostChange={handlePostChange} handlePostEdit={handlePostEdit} />
-          }
-        </div> :
-        <div className='border-2 rounded-lg p-10 max-w-xl mx-auto p'>
-          <div className='flex flex-row justify-start font-bold'>
-            <p className='text-white text-3xl'>{postDetails.User.username}</p>
-          </div>
-          <h3 className=' flex justify-start text-white text-xl my-3'>{postDetails.content}</h3>
-          <div>
-            <img src={postDetails.image} alt={postDetails.image} />
-            <p className='flex justify-start text-slate-400 mt-3'>{postDetails.createdAt.split('T')[0]}</p>
-          </div>
-        </div>
+    <div className='min-h-screen bg-slate-100'>
+  {parseInt(user?.id) === parseInt(postDetails?.User?.id) ?
+    <div className='border-2 rounded-lg p-10 max-w-xl mx-auto bg-white mt-84'>
+      <div className='flex flex-col justify-start font-bold'>
+        <p className='text-3xl flex justify-start'>@
+          {postDetails.User.username}
+        </p>
+        <p className='flex justify-start text-slate-400 mt-3'>{postDetails.createdAt.split('T')[0]}
+        </p>
+      </div>
+      <h3 className=' flex justify-start text-xl my-3'>{postDetails.content}
+      </h3>
+      <img src={postDetails.image} alt={postDetails.image} />
+
+      <div className='max-w-xl mx-auto flex justify-around mt-4'>
+        <button onClick={() => handleDeletePost(postDetails.id, postDetails.Sport.id)}>Delete Post</button>
+        <button onClick={toggleEdit}>Edit Post</button>
+      </div>
+      {
+        edit && <EditPost editData={editData} handlePostChange={handlePostChange} handlePostEdit={handlePostEdit} />
       }
+    </div> :
+    <div className='border-2 rounded-lg p-10 max-w-xl mx-auto p mt-20'>
+      <div className='flex flex-row justify-start font-bold'>
+        <p className='text-white text-3xl'>{postDetails.User.username}</p>
+      </div>
+      <h3 className=' flex justify-start text-white text-xl my-3'>{postDetails.content}</h3>
+      <div>
+        <img src={postDetails.image} alt={postDetails.image} />
+        <p className='flex justify-start text-slate-400 mt-3'>{postDetails.createdAt.split('T')[0]}</p>
+      </div>
     </div>
+  }
+</div>
+
   )
 }
 export default PostDetails
