@@ -9,6 +9,7 @@ import { useState, useEffect } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom'
 import LeaguePage from './components/LeaguePage';
 import PostDetails from './components/PostDetails'
+import YourPosts from './components/YourPosts';
 
 
 function App() {
@@ -49,6 +50,7 @@ function App() {
             <Route path='/register' element={<Register />}></Route>
             <Route path='/leaguePage/:id' element={<LeaguePage user={user} />} />
             <Route path='/postDetails/:id' element={<PostDetails user={user} />} />
+            <Route path='/yourposts/:id' element={<YourPosts user={user}/>}/>
           </Routes>
         </main>
       </div>
