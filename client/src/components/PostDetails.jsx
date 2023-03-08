@@ -28,7 +28,7 @@ const PostDetails = ({ user }) => {
 
   useEffect(() => {
     getPostDetails()
-  },[])
+  }, [])
 
   const handlePostChange = (evt) => {
     setEditData({ ...editData, [evt.target.id]: evt.target.value })
@@ -45,8 +45,8 @@ const PostDetails = ({ user }) => {
     setEdit(!edit)
   }
 
-  console.log(user)
-  console.log(postDetails)
+  // console.log(user)
+  // console.log(postDetails)
 
   // let userOptions = (
   //   <div>
@@ -63,7 +63,7 @@ const PostDetails = ({ user }) => {
   //       edit && <EditPost editData={editData} handlePostChange={handlePostChange} handlePostEdit={handlePostEdit} />
   //     }
   //   </div>
-  //  )
+  // )
   // let publicOptions = (
   //   <div>
   //     <div>
@@ -79,9 +79,34 @@ const PostDetails = ({ user }) => {
 
   return postDetails && (
     <div>
-      {/* { user.id === postDetails.User.id ? userOptions : publicOptions} */}
+      {parseInt(user?.id) === parseInt(postDetails?.User?.id) ?
+        <div>
+          <div>
+            <p>{postDetails.User.username}</p>
+            <h3>{postDetails.content}</h3>
+          </div>
+          <div>
+            <img src={postDetails.image} alt={postDetails.image} />
+            <p>{postDetails.createdAt.split('T')[0]} <button onClick={() => handleDeletePost(postDetails.id, postDetails.Sport.id)}>Delete Post</button></p>
+          </div>
+          <button onClick={toggleEdit}>Edit Post</button>
+          {
+            edit && <EditPost editData={editData} handlePostChange={handlePostChange} handlePostEdit={handlePostEdit} />
+          }
+        </div> :
+        <div>
+          <div>
+            <p>{postDetails.User.username}</p>
+            <h3>{postDetails.content}</h3>
+          </div>
+          <div>
+            <img src={postDetails.image} alt={postDetails.image} />
+            <p>{postDetails.createdAt.split('T')[0]}</p>
+          </div>
+        </div>
+      }
 
-      <div>
+      {/* <div>
         <div>
           <p>{postDetails.User.username}</p>
           <h3>{postDetails.content}</h3>
@@ -94,7 +119,7 @@ const PostDetails = ({ user }) => {
         {
           edit && <EditPost editData={editData} handlePostChange={handlePostChange} handlePostEdit={handlePostEdit} />
         }
-      </div>
+      </div> */}
     </div>
 
   )
