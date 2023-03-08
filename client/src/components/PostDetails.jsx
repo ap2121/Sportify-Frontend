@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
-const PostDetails = ({user}) => {
+const PostDetails = ({ user }) => {
 
   let navigate = useNavigate()
 
@@ -11,7 +11,7 @@ const PostDetails = ({user}) => {
   const [edit, setEdit] = useState(false)
   const [editData, setEditData] = useState({})
 
-  let {id} = useParams()
+  let { id } = useParams()
 
   const handleDeletePost = async (postID, sportID) => {
     const id = sportID
@@ -34,49 +34,58 @@ const PostDetails = ({user}) => {
   useEffect(() => {
     setEditData(postDetails)
   }, [postDetails])
-  
-const toggleEdit = () => {
-  setEdit(!edit)
-}
 
-const handleChange = (e) => {
-  setEditData((prevEditData) => {
-    return {
-      ...prevEditData,
-      [e.target.name]: e.target.value
-    }
-  }) 
-}
+  const toggleEdit = () => {
+    setEdit(!edit)
+  }
+
+  const handleChange = (e) => {
+    setEditData((prevEditData) => {
+      return {
+        ...prevEditData,
+        [e.target.name]: e.target.value
+      }
+    })
+  }
 
 
-const handleSub = (e) => {
-  e.preventDefault()
-  axios.put(`http://localhost:3001/api/posts/edit-post/${id}`, editData)
-  setEdit(false)
-  navigate(`/postDetails/${id}`)
-  setPostDetails(editData)
-}
-  
+  const handleSub = (e) => {
+    e.preventDefault()
+    axios.put(`http://localhost:3001/api/posts/edit-post/${id}`, editData)
+    setEdit(false)
+    navigate(`/postDetails/${id}`)
+    setPostDetails(editData)
+  }
+
   return postDetails && (
 
-    <div>
-      <div>
-        <p>{postDetails.User.username}</p>
-        <h3>{postDetails.content}</h3>
+    <div className='h-screen bg-slate-700'>
+      <div className='border-2 rounded-lg p-10 max-w-xl mx-auto p'>
+        <div className='flex flex-row justify-start font-bold'>
+          <p className='text-white text-3xl'>
+            {postDetails.User.username}
+          </p>
+        </div>
+        <h3 className=' flex justify-start text-white text-xl my-3'>{postDetails.content}
+        </h3>
+        <img src={postDetails.image} alt={postDetails.image} />
+        <p className='flex justify-start text-slate-400 mt-3'>{postDetails.createdAt.split('T')[0]}
+        </p>
       </div>
-      <div>
-        <img src={postDetails.image} alt={postDetails.image} /> 
-        <p>{postDetails.createdAt.split('T')[0]} <button onClick={() => handleDeletePost(postDetails.id, postDetails.Sport.id)}>Delete Post</button></p>
+      <div className='text-white max-w-xl mx-auto flex justify-around mt-4'>
+        <button onClick={() => handleDeletePost(postDetails.id, postDetails.Sport.id)} className=''>Delete Post</button>
+        <button onClick={toggleEdit}>Edit Post</button>
       </div>
-      <button onClick={toggleEdit}>Edit Post</button>
-      {edit && <form onSubmit={handleSub}>
-        <input type='text' name='content' value={editData.content} onChange={handleChange}/>
 
-        <input type='text' name='image' value={editData.image} onChange={handleChange}/>
-        <button>Edit Post</button>
+      {edit &&
+        <form className='flex flex-col items-center' onSubmit={handleSub}>
+          <input type='text' name='content' value={editData.content} onChange={handleChange} />
+
+          <input type='text' name='image' value={editData.image} onChange={handleChange} />
+          <button className='border-2 bg-white text-black p-3'>Edit Post</button>
         </form>
-        
-        }
+
+      }
     </div>
   )
 }
