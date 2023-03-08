@@ -18,6 +18,9 @@ const YourPosts = ({ }) => {
 
     return posts && (
         <div>
+            <div>
+                <h1> Your Posts </h1>
+            </div>
             {posts.map((post) => (
                 <div key={post.id}>
                     <NavLink to={`/postDetails/${post.id}`}>
