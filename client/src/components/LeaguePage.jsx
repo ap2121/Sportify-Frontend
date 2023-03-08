@@ -3,23 +3,44 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import CreatePost from './CreatePost'
 
-const LeaguePage = () => {
+const LeaguePage = ({user}) => {
+
+    const initialPostState = {
+        content: '',
+        image: ''
+    }
 
     const [selectedLeague, setSelectedLeague] = useState()
     const [posts, setPosts] = useState()
+    const [createPost, setCreatePost] = useState(initialPostState)
 
     let { id } = useParams()
 
+    const handlePostChange = (evt) => {
+        setCreatePost({ ...createPost, [evt.target.id]: evt.target.value })
+    }
 
+    const handlePostSubmit = async (e) => {
+        e.preventDefault()
+        if (createPost.content || createPost.image) {
+            await axios.post(`http://localhost:3001/api/posts/create-post/${user.id}/${id}`, createPost)
+            setCreatePost(initialPostState)
+            getSportbyId()
+        } else {
+            return
+        }
+    }
+
+    const getSportbyId = async () => {
+        const response = await axios.get(`http://localhost:3001/api/posts/posts-by-sport/${id}`)
+        setPosts(response.data)
+        setSelectedLeague(response.data[0])
+        console.log(posts);
+    }
 
     useEffect(() => {
-        const getSportbyId = async () => {
-            const response = await axios.get(`http://localhost:3001/api/posts/posts-by-sport/${id}`)
-            setPosts(response.data)
-            setSelectedLeague(response.data[0])
-            console.log(posts);
-        }
         getSportbyId()
     }, [id])
 
@@ -30,6 +51,9 @@ const LeaguePage = () => {
                     <img src={selectedLeague.Sport.image} alt={selectedLeague.Sport.image} className='max-w-screen- '/>
                     <h1 className='text-6xl text-white'>{selectedLeague.Sport.leagueName}</h1>
                     <h2 className='text-2xl text-white'>{selectedLeague.Sport.description}</h2>
+                </div>
+                <div>
+                    {<CreatePost createPost={createPost} handlePostChange={handlePostChange} handlePostSubmit={handlePostSubmit}/>}
                 </div>
                 <div className='flex flex-col mt-10'>
 
