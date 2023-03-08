@@ -46,16 +46,21 @@ const LeaguePage = ({user}) => {
 
     return selectedLeague && (
         <div className='h-screen bg-slate-700'>
-            <div className='max-w-screen-lg p-7 mx-auto flex flex-col'>
-                <div className='flex flex-col'>
-                    <img src={selectedLeague.Sport.image} alt={selectedLeague.Sport.image} className='max-w-screen- '/>
-                    <h1 className='text-6xl text-white'>{selectedLeague.Sport.leagueName}</h1>
-                    <h2 className='text-2xl text-white'>{selectedLeague.Sport.description}</h2>
-                </div>
-                <div>
-                    {<CreatePost createPost={createPost} handlePostChange={handlePostChange} handlePostSubmit={handlePostSubmit}/>}
-                </div>
-                <div className='flex flex-col mt-10'>
+          <div className='relative'>
+            <img
+              src={selectedLeague.Sport.image}
+              alt={selectedLeague.Sport.image}
+              className='w-full h-56 object-cover'
+            />
+            <div className='absolute top-0 left-0 w-full h-full bg-black opacity-50'></div>
+            <div className='absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center'>
+              <h1 className='text-6xl text-white'>{selectedLeague.Sport.leagueName}</h1>
+              <h2 className='text-2xl text-white'>{selectedLeague.Sport.description}</h2>
+            </div>
+          </div>
+          <div className='max-w-lg mx-auto p-7'>
+            <CreatePost createPost={createPost} handlePostChange={handlePostChange} handlePostSubmit={handlePostSubmit}/>
+            <div className='mt-10'>
 
                     {posts.map((post) => (
                         <Link key={post.id} to={`/postDetails/${post.id}`} className='shadow-md  shadow-gray-600 rounded-lg'>
