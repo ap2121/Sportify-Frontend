@@ -1,6 +1,6 @@
 import React from 'react'
 
-const EditPost = ({editData, handlePostChange, handlePostEdit}) => {
+const EditPost = ({ editData, handlePostChange, handlePostEdit }) => {
 
     return (
         <div>
@@ -11,6 +11,14 @@ const EditPost = ({editData, handlePostChange, handlePostEdit}) => {
                     placeholder="What's your take?"
                     onChange={handlePostChange}
                     value={editData.content}
+                />
+
+                <input
+                    type="text"
+                    id="image"
+                    placeholder="Image URL"
+                    value={editData.image}
+                    onChange={handlePostChange}
                 />
                 <button type="submit" className='border-2 rounded-lg bg-white text-black p-2 my-2'>Edit</button>
             </form>
