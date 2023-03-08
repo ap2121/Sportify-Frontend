@@ -46,30 +46,35 @@ const PostDetails = ({ user }) => {
   }
 
   return postDetails && (
-    <div>
+    <div className='h-screen bg-slate-700'>
       {parseInt(user?.id) === parseInt(postDetails?.User?.id) ?
-        <div>
-          <div>
-            <p>{postDetails.User.username}</p>
-            <h3>{postDetails.content}</h3>
+        <div className='border-2 rounded-lg p-10 max-w-xl mx-auto p'>
+          <div className='flex flex-row justify-start font-bold'>
+            <p className='text-white text-3xl'>
+              {postDetails.User.username}
+            </p>
           </div>
-          <div>
-            <img src={postDetails.image} alt={postDetails.image} />
-            <p>{postDetails.createdAt.split('T')[0]} <button onClick={() => handleDeletePost(postDetails.id, postDetails.Sport.id)}>Delete Post</button></p>
+          <h3 className=' flex justify-start text-white text-xl my-3'>{postDetails.content}
+          </h3>
+          <img src={postDetails.image} alt={postDetails.image} />
+          <p className='flex justify-start text-slate-400 mt-3'>{postDetails.createdAt.split('T')[0]}
+          </p>
+          <div className='text-white max-w-xl mx-auto flex justify-around mt-4'>
+            <button onClick={() => handleDeletePost(postDetails.id, postDetails.Sport.id)}>Delete Post</button>
+            <button onClick={toggleEdit}>Edit Post</button>
           </div>
-          <button onClick={toggleEdit}>Edit Post</button>
           {
             edit && <EditPost editData={editData} handlePostChange={handlePostChange} handlePostEdit={handlePostEdit} />
           }
         </div> :
-        <div>
-          <div>
-            <p>{postDetails.User.username}</p>
-            <h3>{postDetails.content}</h3>
+        <div className='border-2 rounded-lg p-10 max-w-xl mx-auto p'>
+          <div className='flex flex-row justify-start font-bold'>
+            <p className='text-white text-3xl'>{postDetails.User.username}</p>
           </div>
+          <h3 className=' flex justify-start text-white text-xl my-3'>{postDetails.content}</h3>
           <div>
             <img src={postDetails.image} alt={postDetails.image} />
-            <p>{postDetails.createdAt.split('T')[0]}</p>
+            <p className='flex justify-start text-slate-400 mt-3'>{postDetails.createdAt.split('T')[0]}</p>
           </div>
         </div>
       }
