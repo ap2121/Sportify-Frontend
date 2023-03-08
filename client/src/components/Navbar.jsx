@@ -26,7 +26,7 @@ const Navbar = ({ user, handleLogOut }) => {
           <NavLink to='/'>Sportify</NavLink>
         </div>
 
-        <ul className='px-5 flex items-center'>
+        <ul className='px-5 flex flex-row'>
           <li className='font-medium text-xl mr-6 text-slate-100'>Welcome {user.email}</li>
           <li className='px-4 cursor-pointer capitalize font-medium text-white hover:scale-105 duration-150'>
             <NavLink onClick={handleLogOut} to='/'>Sign Out</NavLink>
@@ -67,7 +67,7 @@ const Navbar = ({ user, handleLogOut }) => {
       <div className='text-2xl ml-5 text-white'>
         <NavLink to='/'>Sportify</NavLink>
       </div>
-      <ul className='px-5 items-center'>
+      <ul className='px-5 items-center flex flex-row'>
         <li className='px-4 cursor-pointer capitalize font-medium text-white hover:scale-105 duration-150'>
           <NavLink to='/login'>Sign In</NavLink>
         </li>
