@@ -5,13 +5,13 @@ import axios from 'axios'
 
 const PostDetails = ({user}) => {
 
-let navigate = useNavigate()
+  let navigate = useNavigate()
 
-const [postDetails, setPostDetails] = useState(null)
-const [edit, setEdit] = useState(false)
-const [editData, setEditData] = useState({})
+  const [postDetails, setPostDetails] = useState(null)
+  const [edit, setEdit] = useState(false)
+  const [editData, setEditData] = useState({})
 
-let {id} = useParams()
+  let {id} = useParams()
 
   const handleDeletePost = async (postID, sportID) => {
     const id = sportID
@@ -57,7 +57,7 @@ const handleSub = (e) => {
   setPostDetails(editData)
 }
   
- return postDetails && (
+  return postDetails && (
 
     <div>
       <div>
