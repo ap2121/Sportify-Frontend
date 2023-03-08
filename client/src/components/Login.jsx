@@ -4,7 +4,7 @@ import { SignInUser } from '../services/Auth'
 import { Link, useNavigate } from 'react-router-dom'
 import LoginPhoto from '../assets/LoginPhoto.jpg';
 
-const Login = ({ setUser }) => {
+const Login = ({ setUser, user }) => {
   const [formValues, setFormValues] = useState({ email: '', password: '' })
   let navigate = useNavigate()
   const handleChange = (e) => {
@@ -17,7 +17,9 @@ const Login = ({ setUser }) => {
       email: '',
       password: ''
     })
+    
     setUser(payload)
+    
     navigate('/')
   }
 
