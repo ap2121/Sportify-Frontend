@@ -11,47 +11,46 @@ import LeaguePage from './components/LeaguePage';
 import PostDetails from './components/PostDetails'
 
 
-
 function App() {
   const [user, setUser] = useState(null)
+
   let navigate = useNavigate()
-  
+
   const handleLogOut = () => {
     setUser(null)
     localStorage.clear()
     navigate('/')
   }
-  const checkToken  = async () => {
+  const checkToken = async () => {
     const user = await CheckSession()
-    
     setUser(user)
-    
   }
 
   useEffect(() => {
     const token = localStorage.getItem('token')
-    if(token) {
+    if (token) {
       checkToken()
     }
   }, [])
-  
-    return (
+
+
+  return (
     <div>
-      <Navbar 
-      user={user}
-      handleLogOut={handleLogOut}
+      <Navbar
+        user={user}
+        handleLogOut={handleLogOut}
       />
       <div className="App">
         <main className='bg-'>
           <Routes>
-            <Route path='/' element={<Home />}/>
+            <Route path='/' element={<Home />} />
             <Route path='/about' element={<About />} />
-            <Route path='/login' element={<Login setUser={setUser}/>} />
-            <Route path='/register' element={<Register/>}></Route>
-            <Route path='/leaguePage/:id' element={<LeaguePage user={user}/>} />
-            <Route path='/postDetails/:id' element={<PostDetails user={user}/>} />
+            <Route path='/login' element={<Login setUser={setUser} />} />
+            <Route path='/register' element={<Register />}></Route>
+            <Route path='/leaguePage/:id' element={<LeaguePage user={user} />} />
+            <Route path='/postDetails/:id' element={<PostDetails user={user} />} />
           </Routes>
-          </main>
+        </main>
       </div>
     </div>
   );

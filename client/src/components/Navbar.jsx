@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
-const Navbar = ({ user, handleLogOut }) => {
+const Navbar = ({ user, handleLogOut, userDetails }) => {
   const [showLeagues, setShowLeagues] = useState(false);
   const leagues = [
     { id: 1, name: 'Premier League' },
@@ -27,7 +27,7 @@ const Navbar = ({ user, handleLogOut }) => {
         </div>
 
         <ul className='px-5 flex flex-row'>
-          <li className='font-medium text-xl mr-6 text-slate-100'>Welcome {user.email}</li>
+          <li className='font-medium text-xl mr-6 text-slate-100'>Signed in with: {user?.email}</li>
           <li className='px-4 cursor-pointer capitalize font-medium text-white hover:scale-105 duration-150'>
             <NavLink onClick={handleLogOut} to='/'>Sign Out</NavLink>
 
