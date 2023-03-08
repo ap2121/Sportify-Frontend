@@ -45,41 +45,35 @@ const LeaguePage = ({user}) => {
     }, [id])
 
     return selectedLeague && (
-        <div className='h-screen bg-slate-700'>
-          <div className='relative'>
+        <div className="min-h-screen bg-slate-100">
+          <div className="relative">
             <img
               src={selectedLeague.Sport.image}
               alt={selectedLeague.Sport.image}
-              className='w-full h-56 object-cover'
+              className="w-full h-56 object-cover"
             />
-            <div className='absolute top-0 left-0 w-full h-full bg-black opacity-50'></div>
-            <div className='absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center'>
-              <h1 className='text-6xl text-white'>{selectedLeague.Sport.leagueName}</h1>
-              <h2 className='text-2xl text-white'>{selectedLeague.Sport.description}</h2>
+            <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
+            <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center">
+              <h1 className="text-5xl font-bold text-white">{selectedLeague.Sport.leagueName}</h1>
+              <h2 className="text-xl text-white">{selectedLeague.Sport.description}</h2>
             </div>
           </div>
-          <div className='max-w-lg mx-auto p-7'>
+          <div className="max-w-lg mx-auto py-8 px-4 sm:px-6 lg:px-8">
             <CreatePost createPost={createPost} handlePostChange={handlePostChange} handlePostSubmit={handlePostSubmit}/>
-            <div className='mt-10'>
-
-                    {posts.map((post) => (
-                        <Link key={post.id} to={`/postDetails/${post.id}`} className='shadow-md  shadow-gray-600 rounded-lg'>
-                            <div className='text-white bg-slate-500 rounded-lg'>
-                                <h2 className='text-3xl'>{post.User.username}</h2>
-
-                                <h3>{post.content}</h3>
-                                
-                            </div>
-
-
-                        </Link>
-                    ))}
-                    
-                </div>
-                {/* Posts by Sport */}
+            <div className="mt-8 space-y-8">
+              {posts.map((post) => (
+                <Link key={post.id} to={`/postDetails/${post.id}`} className="block bg-white shadow-md rounded-lg hover:shadow-lg transition-shadow">
+                  <div className="p-4">
+                    <h2 className="text-lg font-bold">{post.User.username}</h2>
+                    <p className="text-gray-700 mt-2">{post.content}</p>
+                  </div>
+                </Link>
+              ))}
             </div>
+          </div>
         </div>
-    )
+      );
+      
 }
 
 export default LeaguePage

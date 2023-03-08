@@ -21,7 +21,7 @@ const Navbar = ({ user, handleLogOut }) => {
   let userOptions
   if (user) {
     userOptions = (
-      <header className='flex justify-between items-center w-full'>
+      <header className='flex justify-between items-center w-full z-10'>
         <div className='text-2xl ml-5 text-white'>
           <NavLink to='/'>Sportify</NavLink>
         </div>
@@ -43,7 +43,7 @@ const Navbar = ({ user, handleLogOut }) => {
           >
             Leagues
             {showLeagues && (
-              <ul className='absolute z-10 bg-gray-800 p-2 rounded-md shadow-xl'>
+              <ul className='absolute z-20 bg-gray-800 p-2 rounded-md shadow-xl'>
                 {leagues.map((league) => (
                   <li key={league.id} className='py-2'>
                     <NavLink
@@ -63,7 +63,7 @@ const Navbar = ({ user, handleLogOut }) => {
   }
 
   let publicOptions = (
-    <header className='flex justify-between items-center text-white w-full'>
+    <header className='flex justify-between items-center text-white w-full z-10'>
       <div className='text-2xl ml-5 text-white'>
         <NavLink to='/'>Sportify</NavLink>
       </div>
@@ -81,7 +81,7 @@ const Navbar = ({ user, handleLogOut }) => {
         >
           Leagues
           {showLeagues && (
-            <ul className='absolute z-10 bg-gray-800 p-2 rounded-md shadow-xl'>
+            <ul className='absolute z-20 bg-gray-800 p-2 rounded-md shadow-xl'>
               {leagues.map((league) => (
                 <li key={league.id} className='py-2'>
                   <NavLink
