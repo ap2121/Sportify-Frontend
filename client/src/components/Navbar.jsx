@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
-const Navbar = ({ user, handleLogOut, userDetails }) => {
+const Navbar = ({ user, handleLogOut}) => {
   const [showLeagues, setShowLeagues] = useState(false);
   const leagues = [
     { id: 1, name: 'Premier League' },
@@ -56,6 +56,11 @@ const Navbar = ({ user, handleLogOut, userDetails }) => {
                 ))}
               </ul>
             )}
+          </li>
+          <li>
+            <NavLink to={`/yourPosts/${user.id}`}>
+                  Your Posts
+            </NavLink>
           </li>
         </ul>
       </header>
