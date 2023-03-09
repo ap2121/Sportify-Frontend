@@ -67,7 +67,9 @@ const PostDetails = ({ user }) => {
 
   const handleCommentSubmit = async (e) => {
     e.preventDefault()
+    if(commentForm) {
     await Client.post(`/api/comments/create-comment/${user.id}/${id}`, commentForm)
+    }
     setCommentForm(initialCommentState)
     getAllComments()
 
