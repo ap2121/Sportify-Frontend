@@ -54,8 +54,8 @@ const LeaguePage = ({user}) => {
             />
             <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
             <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center">
-              <h1 className="text-5xl font-bold text-white">{selectedLeague.Sport.leagueName}</h1>
-              <h2 className="text-xl text-white">{selectedLeague.Sport.description}</h2>
+              <h1 className="text-6xl font-bold text-white">{selectedLeague.Sport.leagueName}</h1>
+              {/* <h2 className="text-xl text-white">{selectedLeague.Sport.description}</h2> */}
             </div>
           </div>
           <div className="max-w-lg mx-auto py-8 px-4 sm:px-6 lg:px-8">
