@@ -121,7 +121,7 @@ const PostDetails = ({ user }) => {
             </div>
             <div className='flex flex-col'>
               <p className='italic flex text-slate-400'> replying to @{postDetails.User.username}</p>
-              <p className='flex mt-2'>{comment.text}</p>
+              <p className='flex justify-start mt-2'>{comment.text}</p>
             </div>
           </div>
         ))}
