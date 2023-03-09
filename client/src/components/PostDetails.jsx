@@ -98,13 +98,8 @@ const PostDetails = ({ user }) => {
             </p>
             <p className='flex justify-start text-slate-400 mt-3'>{postDetails.createdAt.split('T')[0]}</p>
           </div>
-          <h3 className=' flex justify-start text-xl my-3'>{postDetails.content}</h3>
-          <img src={postDetails.image} alt={postDetails.image} />
-          <div className='max-w-xl mx-auto flex justify-around mt-4'>
-            <button onClick={() => handleDeletePost(postDetails.id, postDetails.Sport.id)}>Delete Post</button>
-            <button onClick={toggleEdit}>Edit Post</button>
-          </div>
-          {edit && <EditPost editData={editData} handlePostChange={handlePostChange} handlePostEdit={handlePostEdit} />}
+          <h3 className=' flex justify-start text-xl my-3'>{postDetails?.content}</h3>
+          <img src={postDetails.image} alt={postDetails?.image} />
         </div>
 
       }
