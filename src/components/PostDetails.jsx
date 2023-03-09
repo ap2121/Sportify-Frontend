@@ -5,6 +5,7 @@ import Client from '../services/api'
 
 import EditPost from './EditPost'
 import CommentForm from './CommentForm'
+import { comment } from 'postcss'
 
 const PostDetails = ({ user }) => {
 
@@ -66,7 +67,9 @@ const PostDetails = ({ user }) => {
 
   const handleCommentSubmit = async (e) => {
     e.preventDefault()
+    if(commentForm) {
     await Client.post(`/api/comments/create-comment/${user.id}/${id}`, commentForm)
+    }
     setCommentForm(initialCommentState)
     getAllComments()
 
