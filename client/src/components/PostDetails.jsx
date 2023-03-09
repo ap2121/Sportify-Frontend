@@ -74,7 +74,7 @@ const PostDetails = ({ user }) => {
   return postDetails && (
     <div className='min-h-screen bg-slate-100'>
       {parseInt(user?.id) === parseInt(postDetails?.User?.id) ?
-        <div className='border-2 rounded-lg p-10 max-w-xl mx-auto bg-white mt-84'>
+        <div className='border-2 rounded-lg p-10 max-w-xl mx-auto bg-white'>
           <div className='flex flex-col justify-start font-bold'>
             <p className='text-3xl flex justify-start'>@
               {postDetails.User.username}
@@ -85,37 +85,47 @@ const PostDetails = ({ user }) => {
           <h3 className=' flex justify-start text-xl my-3'>{postDetails.content}
           </h3>
           <img src={postDetails.image} alt={postDetails.image} />
-
           <div className='max-w-xl mx-auto flex justify-around mt-4'>
             <button onClick={() => handleDeletePost(postDetails.id, postDetails.Sport.id)}>Delete Post</button>
             <button onClick={toggleEdit}>Edit Post</button>
           </div>
-          {
-            edit && <EditPost editData={editData} handlePostChange={handlePostChange} handlePostEdit={handlePostEdit} />
-          }
+          {edit && <EditPost editData={editData} handlePostChange={handlePostChange} handlePostEdit={handlePostEdit} />}
         </div> :
-        <div className='border-2 rounded-lg p-10 max-w-xl mx-auto p mt-20'>
-          <div className='flex flex-row justify-start font-bold'>
-            <p className='text-white text-3xl'>{postDetails.User.username}</p>
-          </div>
-          <h3 className=' flex justify-start text-white text-xl my-3'>{postDetails.content}</h3>
-          <div>
-            <img src={postDetails.image} alt={postDetails.image} />
+        <div className='border-2 rounded-lg p-10 max-w-xl mx-auto bg-white'>
+          <div className='flex flex-col justify-start font-bold'>
+            <p className='text-3xl flex justify-start'>@
+              {postDetails.User.username}
+            </p>
             <p className='flex justify-start text-slate-400 mt-3'>{postDetails.createdAt.split('T')[0]}</p>
           </div>
+          <h3 className=' flex justify-start text-xl my-3'>{postDetails?.content}</h3>
+          <img src={postDetails.image} alt={postDetails?.image} />
         </div>
+
       }
+
       <div>
+        {user?.id &&
+          <CommentForm handleCommentSubmit={handleCommentSubmit} handleCommentChange={handleCommentChange} commentForm={commentForm} />}
+      </div>
+      <div className=''>
         {comments?.length > 0 && comments.map((comment) => (
-          <div key={comment.id}>
-            {comment.text} {comment.User.username} {comment.createdAt.split('T')[0]} 
+          <div key={comment.id} className='border-2 rounded-lg p-10 max-w-xl mx-auto mt-6 bg-white'>
+            <div className='flex flex-row justify-start mb-2 items-center'>
+              <p className='text-xl font-bold'>@{comment.User.username}</p>
+              <p className='ml-1 font-bold text-slate-400'>·</p>
+              <p className='flex justify-start text-slate-400 ml-1'>{comment.createdAt.split('T')[0]}</p>
+            </div>
+            <div className='flex flex-col'>
+              <p className='italic flex text-slate-400'> replying to @{postDetails.User.username}</p>
+              <p className='flex mt-2'>{comment.text}</p>
+            </div>
           </div>
         ))}
       </div>
-      {user?.id && <div>
-        <CommentForm handleCommentSubmit={handleCommentSubmit} handleCommentChange={handleCommentChange} commentForm={commentForm} />
-      </div>}
+
     </div>
+
 
   )
 }
