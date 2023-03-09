@@ -2,7 +2,7 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import { NavLink, useParams } from 'react-router-dom'
 import axios from 'axios'
-const YourPosts = ({ }) => {
+const YourPosts = () => {
     const [posts, setPosts] = useState(null)
     const { id } = useParams()
     const getUserPosts = async () => {
