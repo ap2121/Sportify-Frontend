@@ -13,6 +13,7 @@ const CommentForm = ({commentForm, handleCommentChange, handleCommentSubmit}) =>
                     onChange={handleCommentChange}
                     value={commentForm.text}
                     maxLength={255}
+                    required
                 />
                 <button type="submit" className='border-2 rounded-lg bg-white text-black p-2 my-2'>Comment</button>
             </form>

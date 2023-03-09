@@ -5,6 +5,7 @@ import Client from '../services/api'
 
 import EditPost from './EditPost'
 import CommentForm from './CommentForm'
+import { comment } from 'postcss'
 
 const PostDetails = ({ user }) => {
 
