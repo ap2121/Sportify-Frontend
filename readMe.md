@@ -1,5 +1,5 @@
 ## Description 
-- Your go to app for sports leagues around the country and world.  Join communities of other rabid supporters and join the discussion in your favorite league.  From the Nba to the Premiere League, find your crowd and get in on the action.  
+- Your go to app for sports leagues around the country and world.  Join communities of other rabid supporters and join the discussion in your favorite league.  From the Nba to the Premiere League, find your crowd and get in on the action! 
 
 ## Technologies Used
 * JavaScript
