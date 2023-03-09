@@ -85,37 +85,45 @@ const PostDetails = ({ user }) => {
           <h3 className=' flex justify-start text-xl my-3'>{postDetails.content}
           </h3>
           <img src={postDetails.image} alt={postDetails.image} />
-
           <div className='max-w-xl mx-auto flex justify-around mt-4'>
             <button onClick={() => handleDeletePost(postDetails.id, postDetails.Sport.id)}>Delete Post</button>
             <button onClick={toggleEdit}>Edit Post</button>
           </div>
-          {
-            edit && <EditPost editData={editData} handlePostChange={handlePostChange} handlePostEdit={handlePostEdit} />
-          }
+          {edit && <EditPost editData={editData} handlePostChange={handlePostChange} handlePostEdit={handlePostEdit} />}
         </div> :
-        <div className='border-2 rounded-lg p-10 max-w-xl mx-auto p mt-20'>
+        <div className='border-2 rounded-lg p-10 max-w-xl mx-auto bg-white mt-20'>
           <div className='flex flex-row justify-start font-bold'>
-            <p className='text-white text-3xl'>{postDetails.User.username}</p>
+            <p className='text-3xl flex justify-start'>@
+              {postDetails.User.username}
+            </p>
           </div>
-          <h3 className=' flex justify-start text-white text-xl my-3'>{postDetails.content}</h3>
-          <div>
-            <img src={postDetails.image} alt={postDetails.image} />
-            <p className='flex justify-start text-slate-400 mt-3'>{postDetails.createdAt.split('T')[0]}</p>
+          <h3 className=' flex justify-start text-xl my-3'>{postDetails.content}</h3>
+          <img src={postDetails.image} alt={postDetails.image} />
+          <div className='max-w-xl mx-auto flex justify-around mt-4'>
+            <button onClick={() => handleDeletePost(postDetails.id, postDetails.Sport.id)}>Delete Post</button>
+            <button onClick={toggleEdit}>Edit Post</button>
           </div>
+          {edit && <EditPost editData={editData} handlePostChange={handlePostChange} handlePostEdit={handlePostEdit} />}
+          <p className='flex justify-start text-slate-400 mt-3'>{postDetails.createdAt.split('T')[0]}</p>
         </div>
+
       }
-      <div>
+      <div className='border-2 rounded-lg p-10 max-w-xl mx-auto mt-6'>
         {comments?.length > 0 && comments.map((comment) => (
           <div key={comment.id}>
-            {comment.text} {comment.User.username} {comment.createdAt.split('T')[0]} 
+            <div className='flex flex-row justify-start font-bold'>
+              <p className='text-white text-xl'>{comment.User.username}</p>
+              <p className='flex justify-start text-slate-400 ml-4'>{comment.createdAt.split('T')[0]}</p>
+            </div>
+            <p className='text-white'>{comment.text}</p>
           </div>
         ))}
+        {user?.id && <div className='mt-4'>
+          <CommentForm handleCommentSubmit={handleCommentSubmit} handleCommentChange={handleCommentChange} commentForm={commentForm} />
+        </div>}
       </div>
-      {user?.id && <div>
-        <CommentForm handleCommentSubmit={handleCommentSubmit} handleCommentChange={handleCommentChange} commentForm={commentForm} />
-      </div>}
     </div>
+
 
   )
 }
