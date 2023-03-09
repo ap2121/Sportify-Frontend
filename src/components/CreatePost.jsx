@@ -13,6 +13,7 @@ const CreatePost = ({ createPost, handlePostChange, handlePostSubmit }) => {
                     placeholder="What's your take..."
                     value={createPost.content}
                     onChange={handlePostChange}
+                    maxLength={255}
                 />
 
                 <input 
