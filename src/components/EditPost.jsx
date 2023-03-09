@@ -20,6 +20,7 @@ const EditPost = ({ editData, handlePostChange, handlePostEdit }) => {
                     placeholder="Image URL"
                     value={editData.image}
                     onChange={handlePostChange}
+                    maxLength={255}
                 />
                 <button type="submit" className='border-2 rounded-lg bg-white text-black p-2 my-2'>Edit</button>
             </form>
