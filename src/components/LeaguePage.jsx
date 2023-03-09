@@ -1,10 +1,9 @@
 import React from 'react'
-
-import Client from '../services/api'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import CreatePost from './CreatePost'
+import Client from '../services/api'
 
 const LeaguePage = ({user}) => {
 
@@ -67,7 +66,7 @@ const LeaguePage = ({user}) => {
                   <div className="p-4">
                     <h2 className="text-lg font-bold flex justify-start">@{post.User.username}</h2>
                     <p className="text-gray-700 mt-2 flex justify-start my-2">{post.content}</p>
-                    <img className='' src={post.image} />
+                    <img className='rounded-xl' src={post.image} />
                   </div>
                 </Link>
               ))}

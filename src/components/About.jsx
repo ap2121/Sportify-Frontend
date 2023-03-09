@@ -11,18 +11,18 @@ const About = () => {
       <div className='grid grid-cols-3 gap-5 mt-20 mx-8 px-12'>
         <div className='text-white border-2 p-5 rounded-3xl '>
           <h3 className='text-3xl'>Nickon Babaei</h3>
-          <img src='https://media.licdn.com/dms/image/D4E35AQE5rlXzU6gxcw/profile-framedphoto-shrink_800_800/0/1677799679806?e=1678809600&v=beta&t=K2SYmNjxsbXNovasEnV8KQa6delB93fyEYCB7I4oCFo' alt='a man who is an engineer' className='h-52 mx-auto my-5' />
+          <img src='https://ca.slack-edge.com/T0351JZQ0-U04CMNSARM3-237670a99690-512' alt='a man who is an engineer' className='h-52 mx-auto rounded-full my-5' />
           
           <p><a href='https://www.linkedin.com/in/nickon-babaei/' target='_blank'>LinkedIn</a> <p></p> <a href='https://github.com/nickonbabaei' target='_blank'>Github</a></p>
         </div>
         <div className='text-white border-2 p-5 rounded-3xl'>
           <h2 className='text-3xl'>Jakub Soroka</h2>
-          <img src='https://media.licdn.com/dms/image/C4E03AQHu29-8g8XGRA/profile-displayphoto-shrink_200_200/0/1652289842087?e=1683763200&v=beta&t=hy1_E8kp6qZXA1wf0ihwDac4Pj5uU3cVrpmP2kkG9E0' className='h-52 mx-auto my-5' alt='an engineer in a bowtie' />
+          <img src='https://media.licdn.com/dms/image/C4E03AQHu29-8g8XGRA/profile-displayphoto-shrink_200_200/0/1652289842087?e=1683763200&v=beta&t=hy1_E8kp6qZXA1wf0ihwDac4Pj5uU3cVrpmP2kkG9E0' className='h-52 rounded-full mx-auto my-5' alt='an engineer in a bowtie' />
           <p><a href='https://www.linkedin.com/in/jakubsoroka/' target='_blank'>LinkedIn</a> <p></p> <a href='https://github.com/S-oroka' target='_blank'>Github</a></p>
         </div>
         <div className='text-white border-2 p-5 rounded-3xl'>
           <h2 className='text-3xl'>Arthur Pate</h2>
-          <img src='https://media.licdn.com/dms/image/D5603AQGceHEt6MVm0Q/profile-displayphoto-shrink_200_200/0/1674675372413?e=1683763200&v=beta&t=fF9wN-PRHf_XFSebZOT_P1vDkLmd7QUPy-SO_Qql3Y0' alt='an engineer sitting at a table' className='h-52 mx-auto my-5' />
+          <img src='https://media.licdn.com/dms/image/D5603AQGceHEt6MVm0Q/profile-displayphoto-shrink_200_200/0/1674675372413?e=1683763200&v=beta&t=fF9wN-PRHf_XFSebZOT_P1vDkLmd7QUPy-SO_Qql3Y0' alt='an engineer sitting at a table' className='h-52 rounded-full mx-auto my-5' />
           
           <p><a href='https://www.linkedin.com/in/arthurpate21/' target='_blank'>LinkedIn</a> <p></p> <a href='https://github.com/ap2121' target='_blank'>Github</a></p>
         </div>
