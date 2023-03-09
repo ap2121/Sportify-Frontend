@@ -1,13 +1,13 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
 import { NavLink, useParams } from 'react-router-dom'
-import axios from 'axios'
+import Client from '../services/api'
 const YourPosts = () => {
     const [posts, setPosts] = useState(null)
     const { id } = useParams()
     const getUserPosts = async () => {
 
-        const userPosts = await axios.get(`http://localhost:3001/api/posts/posts-by-user/${id}`)
+        const userPosts = await Client.get(`/api/posts/posts-by-user/${id}`)
         setPosts(userPosts.data)
     }
 

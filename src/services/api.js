@@ -1,9 +1,8 @@
 import Axios from 'axios'
 
-export const BASE_URL = 'http://localhost:3001'
+export const BASE_URL = 'https://sportify-api.herokuapp.com'
 
 const Client = Axios.create({baseURL: BASE_URL})
-
 Client.interceptors.request.use((config) => {
     const token = localStorage.getItem('token')
     if(token) {

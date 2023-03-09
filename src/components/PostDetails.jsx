@@ -1,7 +1,8 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import axios from 'axios'
+import Client from '../services/api'
+
 import EditPost from './EditPost'
 import CommentForm from './CommentForm'
 
@@ -24,18 +25,18 @@ const PostDetails = ({ user }) => {
 
   const handleDeletePost = async (postID, sportID) => {
     const id = sportID
-    await axios.delete(`http://localhost:3001/api/posts/delete-post/${postID}`)
+    await Client.delete(`/api/posts/delete-post/${postID}`)
     navigate(`/leaguePage/${id}`)
   }
 
   const getPostDetails = async () => {
-    const response = await axios.get(`http://localhost:3001/api/posts/get-post/${id}`)
+    const response = await Client.get(`/api/posts/get-post/${id}`)
     setPostDetails(response.data)
     setEditData(response.data)
   }
 
   const getAllComments = async () => {
-    const response = await axios.get(`http://localhost:3001/api/comments/get-all-comments/${id}`)
+    const response = await Client.get(`/api/comments/get-all-comments/${id}`)
     setComments(response.data)
   }
 
@@ -50,7 +51,7 @@ const PostDetails = ({ user }) => {
 
   const handlePostEdit = async (e) => {
     e.preventDefault()
-    await axios.put(`http://localhost:3001/api/posts/edit-post/${id}`, editData)
+    await Client.put(`/api/posts/edit-post/${id}`, editData)
     setEdit(false)
     getPostDetails()
   }
@@ -65,7 +66,7 @@ const PostDetails = ({ user }) => {
 
   const handleCommentSubmit = async (e) => {
     e.preventDefault()
-    await axios.post(`http://localhost:3001/api/comments/create-comment/${user.id}/${id}`, commentForm)
+    await Client.post(`/api/comments/create-comment/${user.id}/${id}`, commentForm)
     setCommentForm(initialCommentState)
     getAllComments()
 

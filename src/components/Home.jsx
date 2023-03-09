@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import Client from '../services/api';
 import coverPhoto from '../assets/CoverPhoto.jpg';
-import axios from 'axios';
+
 
 const Home = () => {
 
   const [sports, setSports] = useState()
 
   const getSports = async () => {
-    const response = await axios.get(`http://localhost:3001/api/sports/all-sports`)
+    const response = await Client.get(`/api/sports/all-sports`)
     setSports(response.data)
   }
 

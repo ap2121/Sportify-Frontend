@@ -1,5 +1,6 @@
 import React from 'react'
-import axios from 'axios'
+
+import Client from '../services/api'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
@@ -25,7 +26,7 @@ const LeaguePage = ({user}) => {
     const handlePostSubmit = async (e) => {
         e.preventDefault()
         if (createPost.content || createPost.image) {
-            await axios.post(`http://localhost:3001/api/posts/create-post/${user.id}/${id}`, createPost)
+            await Client.post(`/api/posts/create-post/${user.id}/${id}`, createPost)
             setCreatePost(initialPostState)
             getSportbyId()
         } else {
@@ -34,7 +35,7 @@ const LeaguePage = ({user}) => {
     }
 
     const getSportbyId = async () => {
-        const response = await axios.get(`http://localhost:3001/api/posts/posts-by-sport/${id}`)
+        const response = await Client.get(`/api/posts/posts-by-sport/${id}`)
         setPosts(response.data)
         setSelectedLeague(response.data[0])
         console.log(posts);
