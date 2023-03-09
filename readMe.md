@@ -23,7 +23,7 @@
 #### Link to [Trello Board](https://trello.com/b/pS7EDJXe/sports-sphere)
 
 
-## Screen shots
+## Screenshots
 - future screenshot 1
 - future screenshot 2
 
