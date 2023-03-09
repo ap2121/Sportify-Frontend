@@ -22,6 +22,7 @@ const CreatePost = ({ createPost, handlePostChange, handlePostSubmit }) => {
                     placeholder="Image URL"
                     value={createPost.image}
                     onChange={handlePostChange}
+                    maxLength={255}
                 />
                 <button type="submit" className="bg-slate-700 hover:bg-slate-500 text-white font-bold py-2 px-4 rounded-r focus:outline-none focus:shadow-outline">
                     Post

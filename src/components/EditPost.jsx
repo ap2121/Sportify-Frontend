@@ -11,6 +11,7 @@ const EditPost = ({ editData, handlePostChange, handlePostEdit }) => {
                     placeholder="What's your take?"
                     onChange={handlePostChange}
                     value={editData.content}
+                    maxLength={255}
                 />
 
                 <input
