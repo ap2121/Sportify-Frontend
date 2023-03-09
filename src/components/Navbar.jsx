@@ -4,10 +4,18 @@ import { NavLink } from 'react-router-dom';
 const Navbar = ({ user, handleLogOut}) => {
   const [showLeagues, setShowLeagues] = useState(false);
   const leagues = [
-    { id: 1, name: 'Premier League' },
-    { id: 2, name: 'NBA' },
+    { id: 1, name: 'NBA' },
+    { id: 2, name: 'NFL' },
     { id: 3, name: 'NHL' },
-    { id: 4, name: 'NFL' },
+    { id: 4, name: 'MLB' },
+    { id: 5, name: 'MLS' },
+    { id: 6, name: 'Premier League' },
+    { id: 7, name: 'Champions League' },
+    { id: 8, name: 'Bundesliga' },
+    { id: 9, name: 'LaLiga' },
+    { id: 10, name: 'Ligue 1' },
+    { id: 11, name: 'Serie A' },
+    { id: 12, name: 'UFC' },
   ];
 
   const handleMouseEnter = () => {
