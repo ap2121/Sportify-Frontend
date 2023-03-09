@@ -28,5 +28,8 @@
 - future screenshot 2
 
 ## Future Updates
-* Likes and comments
-* Following people and seeing their feeds
+* Allowing comments to be deleted by user who posted or by user whos post the comment is under
+* Adding ui feedback when email or password is entered incorrectly upon signin
+* Have home screen eventually render posts with score api
+* Front end follow sport functionality, if signed in, home page will be posts of sports you follow
+* Allowing users to comment on other comments and so forth
