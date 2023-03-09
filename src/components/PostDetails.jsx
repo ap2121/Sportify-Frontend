@@ -1,11 +1,10 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import Client from '../services/api'
-
 import EditPost from './EditPost'
 import CommentForm from './CommentForm'
 import { comment } from 'postcss'
+import Client from '../services/api'
 
 const PostDetails = ({ user }) => {
 
@@ -90,8 +89,8 @@ const PostDetails = ({ user }) => {
           </h3>
           <img src={postDetails.image} alt={postDetails.image} />
           <div className='max-w-xl mx-auto flex justify-around mt-4'>
-            <button onClick={() => handleDeletePost(postDetails.id, postDetails.Sport.id)}>Delete Post</button>
-            <button onClick={toggleEdit}>Edit Post</button>
+            <button className="inline-block border-2 rounded-lg bg-white hover:bg-slate-700 hover:text-white text-gray-500 font-semibold py-2 px-4 my-2 transition-all duration-200 ease-in-out transform  hover:scale-110" onClick={() => handleDeletePost(postDetails.id, postDetails.Sport.id)}>Delete Post</button>
+            <button className="inline-block border-2 rounded-lg bg-white hover:bg-slate-700 hover:text-white text-gray-500 font-semibold py-2 px-4 my-2 transition-all duration-200 ease-in-out transform  hover:scale-110" onClick={toggleEdit}>Edit Post</button>
           </div>
           {edit && <EditPost editData={editData} handlePostChange={handlePostChange} handlePostEdit={handlePostEdit} />}
         </div> :
@@ -103,7 +102,7 @@ const PostDetails = ({ user }) => {
             <p className='flex justify-start text-slate-400 mt-3'>{postDetails.createdAt.split('T')[0]}</p>
           </div>
           <h3 className=' flex justify-start text-xl my-3'>{postDetails?.content}</h3>
-          <img src={postDetails.image} alt={postDetails?.image} />
+          <img src={postDetails.image} alt={postDetails?.image} className='rounded-md'/>
         </div>
 
       }

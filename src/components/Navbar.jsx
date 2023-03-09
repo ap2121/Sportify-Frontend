@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
-const Navbar = ({ user, handleLogOut}) => {
+const Navbar = ({ user, handleLogOut }) => {
   const [showLeagues, setShowLeagues] = useState(false);
   const leagues = [
     { id: 1, name: 'NBA' },
@@ -30,47 +30,51 @@ const Navbar = ({ user, handleLogOut}) => {
   if (user) {
     userOptions = (
       <header className='flex justify-between items-center w-full z-10'>
-        <div className='text-2xl ml-5 text-white'>
+        <div className='text-2xl ml-5 text-white flex flex-col'>
           <NavLink to='/'>Sportify</NavLink>
         </div>
+        <div className='flex flex-col justify-end'>
+          <p className='font-medium text-sm mr-6 text-slate-100 ml-40'>Signed in with: {user?.email}
+          </p>
+          <ul className='px-5 flex items-center flex-row'>
 
-        <ul className='px-5 flex items-center flex-row'>
-          <li className='font-medium text-xl mr-6 text-slate-100'>Signed in with: {user?.email}</li>
-          <li className='px-4 cursor-pointer capitalize font-medium text-white hover:scale-105 duration-150'>
-            <NavLink onClick={handleLogOut} to='/'>Sign Out</NavLink>
+            <li className='px-4 cursor-pointer capitalize font-medium text-white hover:scale-105 duration-150'>
+              <NavLink onClick={handleLogOut} to='/'>Sign Out</NavLink>
 
-          </li>
+            </li>
 
-          <li className='px-4 cursor-pointer capitalize font-medium text-white hover:scale-105 duration-150'>
-            <NavLink to='/about'>About</NavLink>
-          </li>
-          <li
-            className='relative px-4 py-2 cursor-pointer capitalize font-medium text-white hover:scale-105 duration-150'
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-          >
-            Leagues
-            {showLeagues && (
-              <ul className='absolute z-20 bg-gray-800 p-2 rounded-md shadow-xl'>
-                {leagues.map((league) => (
-                  <li key={league.id} className='py-2'>
-                    <NavLink
-                      to={`/leaguePage/${league.id}`}
-                      className='text-white hover:text-gray-400'
-                    >
-                      {league.name}
-                    </NavLink>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </li>
-          <li className='relative px-4 py-2 cursor-pointer capitalize font-medium text-white hover:scale-105 duration-150'>
-            <NavLink to={`/yourPosts/${user.id}`}>
-                  Your Posts
-            </NavLink>
-          </li>
-        </ul>
+            <li className='px-4 cursor-pointer capitalize font-medium text-white hover:scale-105 duration-150'>
+              <NavLink to='/about'>About</NavLink>
+            </li>
+            <li
+              className='relative px-4 py-2 cursor-pointer capitalize font-medium text-white hover:scale-105 duration-150'
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            >
+              Leagues
+              {showLeagues && (
+                <ul className='absolute z-20 bg-gray-800 p-2 rounded-md shadow-xl'>
+                  {leagues.map((league) => (
+                    <li key={league.id} className='py-2'>
+                      <NavLink
+                        to={`/leaguePage/${league.id}`}
+                        className='text-white hover:text-gray-400'
+                      >
+                        {league.name}
+                      </NavLink>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+            <li className='relative px-4 py-2 cursor-pointer capitalize font-medium text-white hover:scale-105 duration-150'>
+              <NavLink to={`/yourPosts/${user.id}`}>
+                Your Posts
+              </NavLink>
+            </li>
+          </ul>
+        </div>
+
       </header>
     )
   }
@@ -115,11 +119,11 @@ const Navbar = ({ user, handleLogOut}) => {
 
 
 
-  
+
   return (
     <div className='flex justify-between items-center w-full h-20 px-4 bg-slate-700'>
       {user ? userOptions : publicOptions}
-      
+
       {/* <div className='text-2xl ml-5 text-white'>
         <NavLink to='/'>Sportify</NavLink>
       </div>

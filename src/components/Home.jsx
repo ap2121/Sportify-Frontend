@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import Client from '../services/api';
 import coverPhoto from '../assets/CoverPhoto.jpg';
+import Client from '../services/api';
 
 
 const Home = () => {
@@ -48,12 +48,12 @@ const Home = () => {
               <NavLink key={sport.id} to={`/leaguePage/${sport.id}`} className='block overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 rounded-lg'>
                 <img src={sport.image} alt={sport.image} className='w-full h-48 object-cover' />
                 <div className='bg-white p-4'>
-                  <h3 className='text-lg font-medium text-gray-900 mb-2'>
+                  <h3 className='text-2xl font-medium text-gray-900 mb-2'>
                     {sport.leagueName}
                   </h3>
-                  <p className='text-gray-600'>
+                  {/* <p className='text-gray-600'>
                     {sport.description}
-                  </p>
+                  </p> */}
                 </div>
               </NavLink>
             ))}

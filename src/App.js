@@ -42,7 +42,7 @@ function App() {
         handleLogOut={handleLogOut}
       />
       <div className="App">
-        <main className='bg-'>
+        <main className=''>
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/about' element={<About />} />
