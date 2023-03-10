@@ -18,7 +18,7 @@ const Register = () => {
   }
   const handleSubmit = async (e) => {
     e.preventDefault()
-    if(formValues.email && formValues.username && formValues.password && formValues.confirmPassword) {
+    if(formValues.email && formValues.username && formValues.password && formValues.confirmPassword && formValues.password === formValues.confirmPassword) {
     await RegisterUser({
       email: formValues.email,
       username: formValues.username,
