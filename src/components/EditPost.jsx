@@ -5,7 +5,8 @@ const EditPost = ({ editData, handlePostChange, handlePostEdit }) => {
     return (
         <div>
             <form onSubmit={handlePostEdit} className='flex flex-col items-center my-5'>
-                <input
+                <textarea
+                    className='border-2 rounded-md resize-none w-60 h-20'
                     type="text"
                     id="content"
                     placeholder="What's your take?"
@@ -15,6 +16,7 @@ const EditPost = ({ editData, handlePostChange, handlePostEdit }) => {
                 />
 
                 <input
+                    className='border-2 rounded-md resize-none w-60'
                     type="text"
                     id="image"
                     placeholder="Image URL"
@@ -22,10 +24,10 @@ const EditPost = ({ editData, handlePostChange, handlePostEdit }) => {
                     onChange={handlePostChange}
                     maxLength={255}
                 />
-                <button type="submit" className='border-2 rounded-lg bg-white text-black p-2 my-2'>Edit</button>
-            </form>
+                <button type="submit" className="inline-block border-2 rounded-lg bg-white hover:bg-slate-700 hover:text-white text-gray-500 font-semibold py-2 px-4 my-2 transition-all duration-200 ease-in-out transform  hover:scale-110">Edit</button>
+        </form>
 
-        </div>
+        </div >
     )
 }
 
