@@ -6,15 +6,14 @@ import Client from '../services/api'
 const YourPosts = () => {
     const [posts, setPosts] = useState(null)
     const { id } = useParams()
-    const getUserPosts = async () => {
 
+    const getUserPosts = async () => {
         const userPosts = await Client.get(`/api/posts/posts-by-user/${id}`)
         setPosts(userPosts.data)
     }
 
     useEffect(() => {
         getUserPosts()
-
     }, [id])
 
     return posts && (
@@ -31,7 +30,6 @@ const YourPosts = () => {
                             <p className='italic'>Posted in {post.Sport.leagueName}</p>
                             <h2 className="text-lg font-bold flex mx-3 justify-start">@{post.User.username}</h2>
                             <p className="text-gray-700 mt-2 mx-3 flex justify-start my-2">{post.content}</p>
-
                         </NavLink>
                     </div>
                 ))}

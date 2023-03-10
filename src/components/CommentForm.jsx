@@ -1,13 +1,13 @@
 import React from 'react'
 
-const CommentForm = ({commentForm, handleCommentChange, handleCommentSubmit}) => {
+const CommentForm = ({ commentForm, handleCommentChange, handleCommentSubmit }) => {
 
 
     return (
         <div>
             <form onSubmit={handleCommentSubmit} className='flex flex-col items-center my-5'>
                 <textarea
-                className='border-2 rounded-md resize-none w-60 h-20'
+                    className='border-2 rounded-md resize-none w-60 h-20'
                     type="text"
                     id="text"
                     placeholder="Your thoughts?"

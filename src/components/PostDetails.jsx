@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import EditPost from './EditPost'
 import CommentForm from './CommentForm'
-import { comment } from 'postcss'
 import Client from '../services/api'
 
 const PostDetails = ({ user }) => {
@@ -66,8 +65,8 @@ const PostDetails = ({ user }) => {
 
   const handleCommentSubmit = async (e) => {
     e.preventDefault()
-    if(commentForm) {
-    await Client.post(`/api/comments/create-comment/${user.id}/${id}`, commentForm)
+    if (commentForm) {
+      await Client.post(`/api/comments/create-comment/${user.id}/${id}`, commentForm)
     }
     setCommentForm(initialCommentState)
     getAllComments()
@@ -102,9 +101,8 @@ const PostDetails = ({ user }) => {
             <p className='flex justify-start text-slate-400 mt-3'>{postDetails.createdAt.split('T')[0]}</p>
           </div>
           <h3 className=' flex justify-start text-xl my-3'>{postDetails?.content}</h3>
-          <img src={postDetails.image} alt={postDetails?.image} className='rounded-md'/>
+          <img src={postDetails.image} alt={postDetails?.image} className='rounded-md' />
         </div>
-
       }
 
       <div>
@@ -126,7 +124,6 @@ const PostDetails = ({ user }) => {
           </div>
         ))}
       </div>
-
     </div>
 
 

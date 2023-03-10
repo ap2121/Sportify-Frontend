@@ -2,7 +2,6 @@ import React from 'react'
 
 const CreatePost = ({ createPost, handlePostChange, handlePostSubmit }) => {
 
-
     return (
         <div className=''>
             <form onSubmit={handlePostSubmit} className=" rounded-lg p-6 flex justify-center w-full">
