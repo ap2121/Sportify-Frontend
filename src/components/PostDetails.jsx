@@ -133,4 +133,3 @@ const PostDetails = ({ user }) => {
   )
 }
 export default PostDetails
-

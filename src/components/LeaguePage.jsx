@@ -65,6 +65,7 @@ const LeaguePage = ({user}) => {
                 <Link key={post.id} to={`/postDetails/${post.id}`} className="block my-8 bg-white shadow-md rounded-lg hover:shadow-lg transition-shadow">
                   <div className="p-4">
                     <h2 className="text-lg font-bold flex justify-start">@{post.User.username}</h2>
+                    <p className="text-slate-400 mt-2 flex justify-start my-2">{post.createdAt.split('T')[0]}</p>
                     <p className="text-gray-700 mt-2 flex justify-start my-2">{post.content}</p>
                     <img className='rounded-xl' src={post.image} />
                   </div>
