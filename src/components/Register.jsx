@@ -23,12 +23,19 @@ const Register = () => {
       username: formValues.username,
       password: formValues.password
     })
-    setFormValues({
-      email: '',
-      username: '',
-      password: ''
-    })
-    navigate('/login')
+   
+    if(formValues.email && formValues.username && formValues.password) {
+      setFormValues({
+        email: '',
+        username: '',
+        password: ''
+      })
+      navigate('/')
+    } else {
+      return
+    }
+    
+    
   }
 
   return (
